@@ -91,18 +91,103 @@
                     safe, and enjoyable.
                 </p>
                 <a href="#adopt"
-                    class="mb-8 inline-block rounded-xl bg-[#0E7A81] px-6 py-3 font-bold text-white md:mb-10 lg:mb-12 lg:px-8 lg:py-4">View
+                    class="mb-8 inline-block rounded-xl bg-[#0E7A81] px-4 py-2 font-bold text-white md:mb-10 md:px-6 md:py-3 lg:mb-12 lg:px-8 lg:py-4">View
                     More</a>
                 <img src="./images/pet.jpg" alt="" class="w-full" />
             </div>
         </section>
     </header>
 
-    <script>
-        function toggleSidebar() {
-            document.getElementById("sidebar").classList.toggle("hidden");
-        }
-    </script>
+    <main class="mt-12 sm:mt-16 md:mt-20 lg:mt-24">
+        <!-- Adopt section -->
+        <section id="adopt" class="mx-auto w-11/12 max-w-[1320px]">
+            <div class="mx-auto max-w-screen-md text-center">
+                <h2 class="mb-4 text-2xl font-black text-[#131313] md:mb-5 md:text-3xl lg:mb-6 lg:text-4xl">
+                    Adopt Your Best Friend
+                </h2>
+                <p class="mb-8 text-[#131313B2] md:mb-10 lg:mb-12">
+                    Here you'll find a variety of pets, each ready to become a cherished
+                    part of your family. Browse through the profiles to find your
+                    perfect match and make an adoption that changes lives.
+                </p>
+            </div>
+
+            <div id="categories" class="grid grid-cols-2 gap-6 lg:grid-cols-4">
+                <button
+                    class="flex cursor-pointer items-center justify-center gap-4 rounded-2xl border border-[#0E7A81261] p-4 md:p-5 lg:p-6">
+                    <img src="./images/dog.svg" alt=""
+                        class="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14" />
+                    <span class="text-lg font-bold md:text-xl lg:text-2xl">Dogs</span>
+                </button>
+            </div>
+
+            <div class="flex items-center justify-between py-4 md:py-6 lg:py-8">
+                <h3 class="text-lg font-black text-[#131313] md:text-xl lg:text-2xl">
+                    Best Deal For You
+                </h3>
+                <a href=""
+                    class="inline-block rounded-xl bg-[#0E7A81] px-4 py-2 font-bold text-white md:px-6 md:py-3 lg:px-8 lg:py-4">Sort
+                    by Price</a>
+            </div>
+
+            <div class="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:mb-8 lg:grid-cols-4">
+                <div class="col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                        <div class="rounded-xl border p-5">
+                            <div class="mb-4">
+                                <img src="" alt="" class="h-40 w-full rounded-lg object-cover" />
+                            </div>
+                            <div class="space-y-2">
+                                <h4 class="text-lg font-bold text-[#131313] lg:text-xl">
+                                    Mister Tartosh
+                                </h4>
+                                <div class="flex items-center gap-2">
+                                    <img src="./images/breed.svg" alt="" />
+                                    <p class="text-[#131313B2]">
+                                        Breed: <span>Golder retriever</span>
+                                    </p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="./images/birth.svg" alt="" />
+                                    <p class="text-[#131313B2]">Birth: <span>2024</span></p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="./images/gender.svg" alt="" />
+                                    <p class="text-[#131313B2]">Gender: <span>Female</span></p>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <img src="./images/price.svg" alt="" />
+                                    <p class="text-[#131313B2]">Price: <span>199</span>$</p>
+                                </div>
+                            </div>
+                            <hr class="my-4" />
+                            <div class="flex flex-wrap items-center justify-between gap-4">
+                                <button class="rounded-lg border border-[#0E7A8126] px-4 py-2">
+                                    <img src="./images/like.svg" alt="" class="" />
+                                </button>
+                                <button
+                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81]">
+                                    Adopt
+                                </button>
+                                <button
+                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81]">
+                                    Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-1 grid grid-cols-2 content-start gap-6 rounded-xl border p-5">
+                    <div class="aspect-square rounded-lg">
+                        <img src="" alt="" />
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
