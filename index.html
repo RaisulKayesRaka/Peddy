@@ -36,17 +36,21 @@
 
 <body class="font-lato">
     <header>
-        <nav class="w-11/12 mx-auto max-w-[1320px] flex justify-between items-center py-4 sm:py-6 md:py-8 lg:py-10">
+        <!-- Navbar -->
+        <nav
+            class="w-11/12 mx-auto max-w-[1320px] flex items-center justify-between relative py-4 sm:py-6 md:py-8 lg:py-10">
             <button onclick="toggleSidebar()" id="menuBtn" class="text-[#131313] sm:hidden"><i
                     class="fa-solid fa-bars"></i></button>
-            <div class="flex justify-center items-center gap-3">
+            <div
+                class="absolute left-1/2 transform -translate-x-1/2 sm:relative sm:left-auto sm:transform-none flex justify-center items-center gap-3">
                 <img class="h-6" src="./images/logo.svg" alt="Peddy logo">
                 <h3 class="text-[#131313] text-3xl font-black">Peddy</h3>
             </div>
-            <ul class="hidden sm:flex justify-center items-center gap-8 text-[#131313]">
-                <li><a href="">Home</a></li>
-                <li><a href="">Shop</a></li>
-                <li><a href="">Contact</a></li>
+            <ul
+                class="hidden sm:flex justify-center items-center gap-8 text-[#131313] absolute left-1/2 transform -translate-x-1/2">
+                <li><a href="" class="hover:text-[#0E7A81]">Home</a></li>
+                <li><a href="" class="hover:text-[#0E7A81]">Shop</a></li>
+                <li><a href="" class="hover:text-[#0E7A81]">Contact</a></li>
             </ul>
             <div
                 class="flex justify-center items-center w-10 h-10 md:w-12 md:h-12 p-2 border border-[#0E7A8133] rounded-full hover:bg-[#0E7A8133] cursor-pointer">
@@ -57,12 +61,14 @@
                 <button onclick="toggleSidebar()" class="absolute top-5 right-5"><i
                         class="fa-solid fa-xmark"></i></button>
                 <ul class="text-[#131313] space-y-4 mt-4">
-                    <li><a href="#home" onclick="toggleSidebar()">Home</a></li>
-                    <li><a href="#shop" onclick="toggleSidebar()">Shop</a></li>
-                    <li><a href="#contact" onclick="toggleSidebar()">Contact</a></li>
+                    <li><a href="#home" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Home</a></li>
+                    <li><a href="#shop" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Shop</a></li>
+                    <li><a href="#contact" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Contact</a></li>
                 </ul>
             </aside>
         </nav>
+        <hr>
+
     </header>
 
 
