@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light" class="scroll-smooth">
 
 <head>
@@ -37,51 +37,72 @@
 <body class="font-lato">
     <header>
         <!-- Navbar -->
-        <nav
-            class="w-11/12 mx-auto max-w-[1320px] flex items-center justify-between relative py-4 sm:py-6 md:py-8 lg:py-10">
-            <button onclick="toggleSidebar()" id="menuBtn" class="text-[#131313] sm:hidden"><i
-                    class="fa-solid fa-bars"></i></button>
+        <nav class="relative mx-auto flex w-11/12 max-w-[1320px] items-center justify-between py-6 md:py-8 lg:py-10">
+            <button onclick="toggleSidebar()" id="menuBtn" class="text-[#131313] sm:hidden">
+                <i class="fa-solid fa-bars"></i>
+            </button>
             <div
-                class="absolute left-1/2 transform -translate-x-1/2 sm:relative sm:left-auto sm:transform-none flex justify-center items-center gap-3">
-                <img class="h-6" src="./images/logo.svg" alt="Peddy logo">
-                <h3 class="text-[#131313] text-3xl font-black">Peddy</h3>
+                class="absolute left-1/2 flex -translate-x-1/2 transform items-center justify-center gap-3 sm:relative sm:left-auto sm:transform-none">
+                <img class="h-6" src="./images/logo.svg" alt="Peddy logo" />
+                <h3 class="text-3xl font-black text-[#131313]">Peddy</h3>
             </div>
             <ul
-                class="hidden sm:flex justify-center items-center gap-8 text-[#131313] absolute left-1/2 transform -translate-x-1/2">
+                class="absolute left-1/2 hidden -translate-x-1/2 transform items-center justify-center gap-8 text-[#131313] sm:flex">
                 <li><a href="" class="hover:text-[#0E7A81]">Home</a></li>
                 <li><a href="" class="hover:text-[#0E7A81]">Shop</a></li>
                 <li><a href="" class="hover:text-[#0E7A81]">Contact</a></li>
             </ul>
             <div
-                class="flex justify-center items-center w-10 h-10 md:w-12 md:h-12 p-2 border border-[#0E7A8133] rounded-full hover:bg-[#0E7A8133] cursor-pointer">
-                <img class="w-full h-full" src="./images/profile.svg" alt="">
+                class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-[#0E7A8133] p-2 hover:bg-[#0E7A8133] md:h-12 md:w-12">
+                <img class="h-full w-full" src="./images/profile.svg" alt="" />
             </div>
             <aside id="sidebar"
-                class="hidden fixed z-10 top-0 left-0 h-screen w-48 bg-white/10 backdrop-blur-md shadow-md p-10">
-                <button onclick="toggleSidebar()" class="absolute top-5 right-5"><i
-                        class="fa-solid fa-xmark"></i></button>
-                <ul class="text-[#131313] space-y-4 mt-4">
-                    <li><a href="#home" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Home</a></li>
-                    <li><a href="#shop" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Shop</a></li>
-                    <li><a href="#contact" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Contact</a></li>
+                class="fixed left-0 top-0 z-10 hidden h-screen w-48 bg-white/10 p-10 shadow-md backdrop-blur-md">
+                <button onclick="toggleSidebar()" class="absolute right-5 top-5">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <ul class="mt-4 space-y-4 text-[#131313]">
+                    <li>
+                        <a href="#home" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Home</a>
+                    </li>
+                    <li>
+                        <a href="#shop" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Shop</a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="hover:text-[#0E7A81]" onclick="toggleSidebar()">Contact</a>
+                    </li>
                 </ul>
             </aside>
         </nav>
-        <hr>
-
+        <!--Banner section -->
+        <section class="mx-auto w-11/12 max-w-[1320px]">
+            <div class="mx-auto max-w-screen-md text-center">
+                <h4
+                    class="mb-3 text-center font-bold text-[#13131399] sm:mb-4 sm:text-lg md:mb-5 md:text-xl lg:mb-6 lg:text-2xl">
+                    Bringing Families Together ❤️‍🔥
+                </h4>
+                <h1
+                    class="mx-auto mb-3 text-center text-4xl font-black text-[#131313] sm:mb-4 sm:text-5xl md:mb-5 md:text-6xl lg:mb-6 lg:text-7xl">
+                    Your Path to Adoption Starts Here
+                </h1>
+                <p class="mx-auto mb-5 text-center text-[#131313] sm:mb-6 md:mb-7 lg:mb-8">
+                    At Peddy, we connect loving families with their perfect furry
+                    companions. If you are looking to adopt, we're here to make it easy,
+                    safe, and enjoyable.
+                </p>
+                <a href="#adopt"
+                    class="mb-8 inline-block rounded-xl bg-[#0E7A81] px-6 py-3 font-bold text-white md:mb-10 lg:mb-12 lg:px-8 lg:py-4">View
+                    More</a>
+                <img src="./images/pet.jpg" alt="" class="w-full" />
+            </div>
+        </section>
     </header>
-
-
-
-
 
     <script>
         function toggleSidebar() {
             document.getElementById("sidebar").classList.toggle("hidden");
         }
-
     </script>
-
 </body>
 
 </html>
