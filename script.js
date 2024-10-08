@@ -99,20 +99,20 @@ function displayAllPets(pets) {
                                 <div class="flex items-center gap-2">
                                     <img src="./images/breed.svg" alt="" />
                                     <p class="text-[#131313B2]">
-                                        Breed: <span>${pet.breed}</span>
+                                        Breed: <span>${pet.breed? pet.breed : "Unknown"}</span>
                                     </p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/birth.svg" alt="" />
-                                    <p class="text-[#131313B2]">Birth: <span>${pet.date_of_birth}</span></p>
+                                    <p class="text-[#131313B2]">Birth: <span>${pet.date_of_birth? pet.date_of_birth : "Unknown"}</span></p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/gender.svg" alt="" />
-                                    <p class="text-[#131313B2]">Gender: <span>${pet.gender}</span></p>
+                                    <p class="text-[#131313B2]">Gender: <span>${pet.gender? pet.gender : "Unknown"}</span></p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/price.svg" alt="" />
-                                    <p class="text-[#131313B2]">Price: <span>${pet.price}</span>$</p>
+                                    <p class="text-[#131313B2]">Price: <span>${pet.price? pet.price : 0}</span>$</p>
                                 </div>
                             </div>
                             <hr class="my-4" />
