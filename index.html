@@ -133,7 +133,12 @@
             </div>
 
             <div class="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:mb-8 lg:grid-cols-4">
-                <div class="col-span-1 md:col-span-2 lg:col-span-3">
+                <div id="loading" class="col-span-1 md:col-span-2 lg:col-span-3 hidden">
+                    <div class="flex justify-center items-center h-full">
+                        <span class="loading loading-bars loading-lg"></span>
+                    </div>  
+                </div>
+                <div id="pets-container" class="col-span-1 md:col-span-2 lg:col-span-3">
                     <div id="pets" class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                         <!-- pet -->
                         <!-- <div class="rounded-xl border p-5">

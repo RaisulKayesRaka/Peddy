@@ -20,12 +20,12 @@ function fetchPetsByCategory(category) {
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
         .then((res) => res.json())
         .then((data) => {
-
             removeActiveBtn();
 
             const activeBtn = document.getElementById(`btn-${category}`);
             activeBtn.classList.remove("rounded-2xl", "border", "border-[#0E7A81261]");
             activeBtn.classList.add("bg-[#0E7A811A]", "border-2", "border-[#0E7A81]", "rounded-full");
+
             displayAllPets(data.data);
         });
 }
@@ -53,6 +53,13 @@ function fetchAllPets() {
 
 function displayAllPets(pets) {
     document.getElementById("pets").innerHTML = "";
+
+    document.getElementById("pets-container").classList.add("hidden");
+    document.getElementById("loading").classList.remove("hidden");
+    setTimeout(() => {
+
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("pets-container").classList.remove("hidden");
 
     document
         .getElementById("pets")
@@ -99,20 +106,20 @@ function displayAllPets(pets) {
                                 <div class="flex items-center gap-2">
                                     <img src="./images/breed.svg" alt="" />
                                     <p class="text-[#131313B2]">
-                                        Breed: <span>${pet.breed? pet.breed : "Unknown"}</span>
+                                        Breed: <span>${pet.breed ? pet.breed : "Unknown"}</span>
                                     </p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/birth.svg" alt="" />
-                                    <p class="text-[#131313B2]">Birth: <span>${pet.date_of_birth? pet.date_of_birth : "Unknown"}</span></p>
+                                    <p class="text-[#131313B2]">Birth: <span>${pet.date_of_birth ? pet.date_of_birth : "Unknown"}</span></p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/gender.svg" alt="" />
-                                    <p class="text-[#131313B2]">Gender: <span>${pet.gender? pet.gender : "Unknown"}</span></p>
+                                    <p class="text-[#131313B2]">Gender: <span>${pet.gender ? pet.gender : "Unknown"}</span></p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/price.svg" alt="" />
-                                    <p class="text-[#131313B2]">Price: <span>${pet.price? pet.price : 0}</span>$</p>
+                                    <p class="text-[#131313B2]">Price: <span>${pet.price ? pet.price : 0}</span>$</p>
                                 </div>
                             </div>
                             <hr class="my-4" />
@@ -133,6 +140,7 @@ function displayAllPets(pets) {
 
         document.getElementById("pets").appendChild(div);
     });
+    }, 2000);
 }
 
 fetchAllPets();
