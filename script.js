@@ -51,6 +51,18 @@ function fetchAllPets() {
         .then((data) => displayAllPets(data.pets));
 }
 
+function addToLiked(petId) {
+    fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
+        .then((res) => res.json())
+        .then((data) => {
+            liked = document.getElementById("liked");
+            div = document.createElement("div");
+            div.classList.add("aspect-square");
+            div.innerHTML = `<img src="${data.petData.image}" alt="" class="w-full h-full object-cover rounded-lg"/>`;
+            liked.appendChild(div);
+        });
+}
+
 function displayAllPets(pets) {
     document.getElementById("pets").innerHTML = "";
 
@@ -58,29 +70,29 @@ function displayAllPets(pets) {
     document.getElementById("loading").classList.remove("hidden");
     setTimeout(() => {
 
-    document.getElementById("loading").classList.add("hidden");
-    document.getElementById("pets-container").classList.remove("hidden");
+        document.getElementById("loading").classList.add("hidden");
+        document.getElementById("pets-container").classList.remove("hidden");
 
-    document
-        .getElementById("pets")
-        .parentElement.classList.remove(
-            "border",
-            "rounded-xl",
-            "p-5",
-            "bg-[#F8F8F8]"
-        );
-
-    if (pets.length === 0) {
         document
             .getElementById("pets")
-            .parentElement.classList.add(
+            .parentElement.classList.remove(
                 "border",
                 "rounded-xl",
                 "p-5",
                 "bg-[#F8F8F8]"
             );
 
-        document.getElementById("pets").innerHTML = `
+        if (pets.length === 0) {
+            document
+                .getElementById("pets")
+                .parentElement.classList.add(
+                    "border",
+                    "rounded-xl",
+                    "p-5",
+                    "bg-[#F8F8F8]"
+                );
+
+            document.getElementById("pets").innerHTML = `
             <div class="col-span-1 md:col-span-2 lg:col-span-3">
                 <div class="p-4 md:p-12 lg:p-24">
                     <img src="./images/error.svg" alt="" class="w-20 md:w-32 lg:w-40 mx-auto mb-6" />
@@ -89,13 +101,13 @@ function displayAllPets(pets) {
                 </div>
             </div>
         `;
-        return;
-    }
-    pets.map((pet) => {
-        div = document.createElement("div");
-        div.classList.add("rounded-xl", "border", "p-5");
+            return;
+        }
+        pets.map((pet) => {
+            div = document.createElement("div");
+            div.classList.add("rounded-xl", "border", "p-5");
 
-        div.innerHTML = `
+            div.innerHTML = `
             <div class="mb-4">
                                 <img src="${pet.image}" alt="" class="h-40 w-full rounded-lg object-cover" />
                             </div>
@@ -124,7 +136,7 @@ function displayAllPets(pets) {
                             </div>
                             <hr class="my-4" />
                             <div class="flex flex-wrap items-center justify-between gap-4">
-                                <button class="rounded-lg border border-[#0E7A8126] px-4 py-2">
+                                <button onclick="addToLiked(${pet.petId})" class="rounded-lg border border-[#0E7A8126] px-4 py-2">
                                     <img src="./images/like.svg" alt="" class="" />
                                 </button>
                                 <button
@@ -138,8 +150,8 @@ function displayAllPets(pets) {
                             </div>
         `;
 
-        document.getElementById("pets").appendChild(div);
-    });
+            document.getElementById("pets").appendChild(div);
+        });
     }, 2000);
 }
 
