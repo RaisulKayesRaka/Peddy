@@ -1,3 +1,5 @@
+let fetchedPets = [];
+
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("hidden");
 }
@@ -41,12 +43,13 @@ function fetchPetsByCategory(category) {
             );
 
             displayAllPets(data.data);
+            fetchedPets = data.data;
         });
 }
 
 function displayCategories(categories) {
     categories.map((category) => {
-        buttonContainer = document.createElement("div");
+        const buttonContainer = document.createElement("div");
         buttonContainer.innerHTML = `
             <button id="btn-${category.category}" onclick="fetchPetsByCategory('${category.category}')"
                     class="category-btn flex w-full cursor-pointer items-center justify-center gap-4 rounded-2xl border border-[#0E7A81261] p-4 md:p-5 lg:p-6">
@@ -62,7 +65,10 @@ function displayCategories(categories) {
 function fetchAllPets() {
     fetch("https://openapi.programming-hero.com/api/peddy/pets")
         .then((res) => res.json())
-        .then((data) => displayAllPets(data.pets));
+        .then((data) => {
+            displayAllPets(data.pets);
+            fetchedPets = data.pets;
+        });
 }
 
 function addToLiked(petId) {
@@ -81,7 +87,7 @@ function displayDetails(petId) {
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
         .then((res) => res.json())
         .then((data) => {
-            div = document.createElement("div");
+            const div = document.createElement("div");
             div.classList.add(
                 "flex",
                 "items-center",
@@ -92,7 +98,8 @@ function displayDetails(petId) {
             div.innerHTML = `
                 <div
                     class="mx-auto w-11/12 max-w-screen-sm p-8 bg-white rounded-xl max-h-[90vh] overflow-y-auto overscroll-none">
-                    <img src="${data.petData.image}" alt="" class="h-48 sm:h-64 md:h-80 w-full rounded-lg mb-6 object-cover">
+                    <img src="${data.petData.image
+                }" alt="" class="h-48 sm:h-64 md:h-80 w-full rounded-lg mb-6 object-cover">
                     <h4 class="text-xl font-bold text-[#131313] lg:text-2xl mb-4">
                         ${data.petData.pet_name}
                     </h4>
@@ -100,30 +107,44 @@ function displayDetails(petId) {
                         <div class="flex items-center gap-2">
                             <img src="./images/breed.svg" alt="" />
                             <p class="text-[#131313B2]">
-                                Breed: <span>${data.petData.breed ? data.petData.breed : "Unknown"}</span>
+                                Breed: <span>${data.petData.breed
+                    ? data.petData.breed
+                    : "Unknown"
+                }</span>
                             </p>
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./images/birth.svg" alt="" />
-                            <p class="text-[#131313B2]">Birth: <span>${data.petData.date_of_birth ? data.petData.date_of_birth : "Unknown"}</span></p>
+                            <p class="text-[#131313B2]">Birth: <span>${data.petData.date_of_birth
+                    ? data.petData.date_of_birth
+                    : "Unknown"
+                }</span></p>
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./images/gender.svg" alt="" />
-                            <p class="text-[#131313B2]">Gender: <span>${data.petData.gender ? data.petData.gender : "Unknown"}</span></p>
+                            <p class="text-[#131313B2]">Gender: <span>${data.petData.gender
+                    ? data.petData.gender
+                    : "Unknown"
+                }</span></p>
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./images/price.svg" alt="" />
-                            <p class="text-[#131313B2]">Price: <span>${data.petData.price ? data.petData.price : 0}</span>$</p>
+                            <p class="text-[#131313B2]">Price: <span>${data.petData.price ? data.petData.price : 0
+                }</span>$</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./images/vaccine.png" alt="" class="w-5 h-5" />
-                            <p class="text-[#131313B2]">Vaccinated status: <span>${data.petData.vaccinated_status ? data.petData.vaccinated_status : "Unknown"}</span></p>
+                            <p class="text-[#131313B2]">Vaccinated status: <span>${data.petData.vaccinated_status
+                    ? data.petData.vaccinated_status
+                    : "Unknown"
+                }</span></p>
                         </div>
                     </div>
                     <hr class="my-4">
                     <div>
                         <h4 class="font-semibold text-[#131313] mb-3">Detail Information</h4>
-                        <p class="text-[#131313B2] mb-4">${data.petData.pet_details}</p>
+                        <p class="text-[#131313B2] mb-4">${data.petData.pet_details
+                }</p>
                     </div>
                     <div>
                         <button onclick="closeModal()"
@@ -203,7 +224,7 @@ function displayAllPets(pets) {
             return;
         }
         pets.map((pet) => {
-            div = document.createElement("div");
+            const div = document.createElement("div");
             div.classList.add("rounded-xl", "border", "p-5");
 
             div.innerHTML = `
@@ -262,6 +283,11 @@ function displayAllPets(pets) {
             document.getElementById("pets").appendChild(div);
         });
     }, 2000);
+}
+
+function sortByPrice() {
+    let sortedPets = fetchedPets.sort((a, b) => b.price - a.price);
+    displayAllPets(sortedPets);
 }
 
 fetchAllPets();
