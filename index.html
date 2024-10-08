@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="light" class="scroll-smooth">
 
 <head>
@@ -75,7 +75,7 @@
             </aside>
         </nav>
         <!--Banner section -->
-        <section class="mx-auto w-11/12 max-w-[1320px] mt-4">
+        <section class="mx-auto mt-4 w-11/12 max-w-[1320px]">
             <div class="mx-auto max-w-screen-md text-center">
                 <h4
                     class="mb-3 text-center font-bold text-[#13131399] sm:mb-4 sm:text-lg md:mb-5 md:text-xl lg:mb-6 lg:text-2xl">
@@ -91,7 +91,7 @@
                     safe, and enjoyable.
                 </p>
                 <a href="#adopt"
-                    class="mb-8 inline-block rounded-xl bg-[#0E7A81] px-4 py-2 font-bold text-white md:mb-10 md:px-6 md:py-3 lg:mb-12 lg:px-8 lg:py-4">View
+                    class="mb-8 inline-block transform rounded-xl bg-[#0E7A81] px-4 py-2 font-bold text-white transition duration-150 ease-in-out active:scale-95 md:mb-10 md:px-6 md:py-3 lg:mb-12 lg:px-8 lg:py-4">View
                     More</a>
                 <img src="./images/pet.jpg" alt="" class="w-full" />
             </div>
@@ -100,7 +100,7 @@
 
     <main class="mt-12 sm:mt-16 md:mt-20 lg:mt-24">
         <!-- Adopt section -->
-        <section id="adopt" class="mx-auto w-11/12 max-w-[1320px]">
+        <section id="adopt" class="mx-auto w-11/12 max-w-[1320px] scroll-mt-8">
             <div class="mx-auto max-w-screen-md text-center">
                 <h2 class="mb-4 text-2xl font-black text-[#131313] md:mb-5 md:text-3xl lg:mb-6 lg:text-4xl">
                     Adopt Your Best Friend
@@ -114,18 +114,19 @@
 
             <div id="categories" class="grid grid-cols-2 gap-6 lg:grid-cols-4"></div>
 
-            <div class="flex items-center justify-between flex-wrap gap-3 py-4 md:py-6 lg:py-8">
+            <div class="flex flex-wrap items-center justify-between gap-3 py-4 md:py-6 lg:py-8">
                 <h3 class="text-lg font-black text-[#131313] md:text-xl lg:text-2xl">
                     Best Deal For You
                 </h3>
                 <button onclick="sortByPrice()"
-                    class="rounded-xl bg-[#0E7A81] px-4 py-2 font-bold text-white md:px-6 md:py-3 lg:px-8 lg:py-4 text-nowrap">Sort
-                    by Price</button>
+                    class="transform text-nowrap rounded-xl bg-[#0E7A81] px-4 py-2 font-bold text-white transition duration-150 ease-in-out active:scale-95 md:px-6 md:py-3 lg:px-8 lg:py-4">
+                    Sort by Price
+                </button>
             </div>
 
             <div class="mb-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:mb-8 lg:grid-cols-4">
-                <div id="loading" class="col-span-1 md:col-span-2 lg:col-span-3 hidden">
-                    <div class="flex justify-center items-center min-h-24 sm:h-full">
+                <div id="loading" class="col-span-1 hidden md:col-span-2 lg:col-span-3">
+                    <div class="flex min-h-24 items-center justify-center sm:h-full">
                         <span class="loading loading-bars loading-lg"></span>
                     </div>
                 </div>
@@ -134,25 +135,25 @@
                 </div>
 
                 <div id="liked"
-                    class="col-span-1 grid grid-cols-2 content-start gap-6 rounded-xl border p-5 min-h-24 sm:h-full">
+                    class="col-span-1 grid min-h-24 grid-cols-2 content-start gap-6 rounded-xl border p-5 sm:h-full">
                 </div>
             </div>
         </section>
 
         <!-- Modal -->
-        <section id="modal" class="hidden fixed top-0 left-0 z-5 h-screen w-full bg-[#13131399]"></section>
-        <section id="timeModal" class="hidden fixed top-0 left-0 z-5 h-screen w-full bg-[#13131399]">
-            <div class="flex items-center justify-center w-full h-full">
+        <section id="modal" class="z-5 fixed left-0 top-0 hidden h-screen w-full bg-[#13131399]"></section>
+        <section id="timeModal" class="z-5 fixed left-0 top-0 hidden h-screen w-full bg-[#13131399]">
+            <div class="flex h-full w-full items-center justify-center">
                 <div
-                    class="mx-auto w-11/12 max-w-96 p-8 bg-white rounded-xl max-h-[90vh] overflow-y-auto overscroll-none text-center">
+                    class="mx-auto max-h-[90vh] w-11/12 max-w-96 overflow-y-auto overscroll-none rounded-xl bg-white p-8 text-center">
                     <img src="./images/logo.svg" alt="" class="mx-auto mb-3" />
-                    <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-[#131313] mb-3">
+                    <h3 class="mb-3 text-xl font-bold text-[#131313] md:text-2xl lg:text-3xl">
                         Congrates!
                     </h3>
-                    <p class="text-sm md:text-base text-[#131313B2] mb-3">
+                    <p class="mb-3 text-sm text-[#131313B2] md:text-base">
                         Adoption Process Is Start For Your Pet.
                     </p>
-                    <p id="countdown" class="text-xl md:text-2xl lg:text-3xl font-bold text-[#131313]">
+                    <p id="countdown" class="text-xl font-bold text-[#131313] md:text-2xl lg:text-3xl">
                         3
                     </p>
                 </div>
@@ -178,13 +179,13 @@
                         <a href=""><img src="./images/facebook.svg" alt="" class="h-6 lg:h-full" /></a>
                     </li>
                     <li>
-                        <a href=""></a><img src="./images/x.svg" alt="" class="h-6 lg:h-full" />
+                        <a href=""><img src="./images/x.svg" alt="" class="h-6 lg:h-full" /></a>
                     </li>
                     <li>
-                        <a href=""></a><img src="./images/youtube.svg" alt="" class="h-6 lg:h-full" />
+                        <a href=""><img src="./images/youtube.svg" alt="" class="h-6 lg:h-full" /></a>
                     </li>
                     <li>
-                        <a href=""></a><img src="./images/instagram.svg" alt="" class="h-6 lg:h-full" />
+                        <a href=""><img src="./images/instagram.svg" alt="" class="h-6 lg:h-full" /></a>
                     </li>
                 </ul>
             </div>
@@ -207,8 +208,8 @@
                 <form action="" class="space-y-4">
                     <input type="text" placeholder="Enter your email"
                         class="block w-full max-w-60 rounded-xl bg-[#FFFFFF0D] px-4 py-3" />
-                    <button href="#adopt" class="w-full max-w-60 rounded-xl bg-[#0E7A81] px-4 py-3 font-bold text-white"
-                        g>
+                    <button href="#adopt"
+                        class="w-full max-w-60 rounded-xl bg-[#0E7A81] px-4 py-3 font-bold text-white">
                         Subscribe
                     </button>
                 </form>

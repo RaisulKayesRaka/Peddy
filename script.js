@@ -17,7 +17,7 @@ function removeActiveBtn() {
             "bg-[#0E7A811A]",
             "border-2",
             "border-[#0E7A81]",
-            "rounded-full"
+            "rounded-full",
         );
         btn.classList.add("rounded-2xl", "border", "border-[#0E7A81261]");
     }
@@ -33,13 +33,13 @@ function fetchPetsByCategory(category) {
             activeBtn.classList.remove(
                 "rounded-2xl",
                 "border",
-                "border-[#0E7A81261]"
+                "border-[#0E7A81261]",
             );
             activeBtn.classList.add(
                 "bg-[#0E7A811A]",
                 "border-2",
                 "border-[#0E7A81]",
-                "rounded-full"
+                "rounded-full",
             );
 
             displayAllPets(data.data);
@@ -52,7 +52,7 @@ function displayCategories(categories) {
         const buttonContainer = document.createElement("div");
         buttonContainer.innerHTML = `
             <button id="btn-${category.category}" onclick="fetchPetsByCategory('${category.category}')"
-                    class="category-btn flex w-full cursor-pointer items-center justify-center gap-4 rounded-2xl border border-[#0E7A81261] p-4 md:p-5 lg:p-6">
+                    class="category-btn flex w-full cursor-pointer items-center justify-center gap-4 rounded-2xl border border-[#0E7A81261] p-4 md:p-5 lg:p-6 hover:bg-[#0E7A811A] transform active:scale-90 transition duration-150 ease-in-out">
                     <img src="${category.category_icon}" alt=""
                         class="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14" />
                     <span class="text-lg font-bold md:text-xl lg:text-2xl">${category.category}</span>
@@ -93,7 +93,7 @@ function displayDetails(petId) {
                 "items-center",
                 "justify-center",
                 "w-full",
-                "h-full"
+                "h-full",
             );
             div.innerHTML = `
                 <div
@@ -199,7 +199,7 @@ function displayAllPets(pets) {
                 "border",
                 "rounded-xl",
                 "p-5",
-                "bg-[#F8F8F8]"
+                "bg-[#F8F8F8]",
             );
 
         if (pets.length === 0) {
@@ -209,7 +209,7 @@ function displayAllPets(pets) {
                     "border",
                     "rounded-xl",
                     "p-5",
-                    "bg-[#F8F8F8]"
+                    "bg-[#F8F8F8]",
                 );
 
             document.getElementById("pets").innerHTML = `
@@ -265,16 +265,16 @@ function displayAllPets(pets) {
                             <hr class="my-4" />
                             <div class="flex flex-wrap items-center justify-between gap-4">
                                 <button onclick="addToLiked(${pet.petId
-                })" class="rounded-lg border border-[#0E7A8126] px-4 py-2 hover:bg-[#0E7A8126]">
+                })" class="rounded-lg border border-[#0E7A8126] px-4 py-2 hover:bg-[#0E7A8126] transform active:scale-95 transition duration-150 ease-in-out">
                                     <img src="./images/like.svg" alt="" class="" />
                                 </button>
                                 <button onclick="adoptPet(${pet.petId
                 })" id="adopt-${pet.petId}"
-                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81] hover:bg-[#0E7A8126]">
+                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81] hover:bg-[#0E7A8126] transform active:scale-95 transition duration-150 ease-in-out">
                                     Adopt
                                 </button>
                                 <button onclick="displayDetails(${pet.petId})"
-                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81] hover:bg-[#0E7A8126]">
+                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81] hover:bg-[#0E7A8126] transform active:scale-95 transition duration-150 ease-in-out">
                                     Details
                                 </button>
                             </div>
