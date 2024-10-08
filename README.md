@@ -17,9 +17,7 @@ Peddy is a pet adoption website built using HTML, Tailwind CSS and JavaScript. T
 - The let keyword
 - The const keyword
 - for/of Loop
-- map()
-- setTimeout()
-- setInterval()
+- Array Methods
 
 # Live link to the deployed project
 https://pet-adoption-raisulkayesraka.netlify.app/
