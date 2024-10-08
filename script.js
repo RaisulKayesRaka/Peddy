@@ -11,7 +11,12 @@ function fetchCategories() {
 function removeActiveBtn() {
     const activeBtn = document.getElementsByClassName("category-btn");
     for (let btn of activeBtn) {
-        btn.classList.remove("bg-[#0E7A811A]", "border-2", "border-[#0E7A81]", "rounded-full");
+        btn.classList.remove(
+            "bg-[#0E7A811A]",
+            "border-2",
+            "border-[#0E7A81]",
+            "rounded-full"
+        );
         btn.classList.add("rounded-2xl", "border", "border-[#0E7A81261]");
     }
 }
@@ -23,8 +28,17 @@ function fetchPetsByCategory(category) {
             removeActiveBtn();
 
             const activeBtn = document.getElementById(`btn-${category}`);
-            activeBtn.classList.remove("rounded-2xl", "border", "border-[#0E7A81261]");
-            activeBtn.classList.add("bg-[#0E7A811A]", "border-2", "border-[#0E7A81]", "rounded-full");
+            activeBtn.classList.remove(
+                "rounded-2xl",
+                "border",
+                "border-[#0E7A81261]"
+            );
+            activeBtn.classList.add(
+                "bg-[#0E7A811A]",
+                "border-2",
+                "border-[#0E7A81]",
+                "rounded-full"
+            );
 
             displayAllPets(data.data);
         });
@@ -67,13 +81,18 @@ function displayDetails(petId) {
     fetch(`https://openapi.programming-hero.com/api/peddy/pet/${petId}`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data.petData.image);
             div = document.createElement("div");
-            div.classList.add("flex" ,"items-center" ,"justify-center" ,"w-full", "h-full");
+            div.classList.add(
+                "flex",
+                "items-center",
+                "justify-center",
+                "w-full",
+                "h-full"
+            );
             div.innerHTML = `
                 <div
                     class="mx-auto w-11/12 max-w-screen-sm p-8 bg-white rounded-xl max-h-[90vh] overflow-y-auto overscroll-none">
-                    <img src="${data.petData.image}" alt="" class="h-48 sm:h-64 md:h-80 w-full rounded-lg mb-6">
+                    <img src="${data.petData.image}" alt="" class="h-48 sm:h-64 md:h-80 w-full rounded-lg mb-6 object-cover">
                     <h4 class="text-xl font-bold text-[#131313] lg:text-2xl mb-4">
                         ${data.petData.pet_name}
                     </h4>
@@ -81,24 +100,24 @@ function displayDetails(petId) {
                         <div class="flex items-center gap-2">
                             <img src="./images/breed.svg" alt="" />
                             <p class="text-[#131313B2]">
-                                Breed: <span>${data.petData.breed}</span>
+                                Breed: <span>${data.petData.breed ? data.petData.breed : "Unknown"}</span>
                             </p>
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./images/birth.svg" alt="" />
-                            <p class="text-[#131313B2]">Birth: <span>${data.petData.date_of_birth}</span></p>
+                            <p class="text-[#131313B2]">Birth: <span>${data.petData.date_of_birth ? data.petData.date_of_birth : "Unknown"}</span></p>
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./images/gender.svg" alt="" />
-                            <p class="text-[#131313B2]">Gender: <span>${data.petData.gender}</span></p>
+                            <p class="text-[#131313B2]">Gender: <span>${data.petData.gender ? data.petData.gender : "Unknown"}</span></p>
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./images/price.svg" alt="" />
-                            <p class="text-[#131313B2]">Price: <span>${data.petData.price}</span>$</p>
+                            <p class="text-[#131313B2]">Price: <span>${data.petData.price ? data.petData.price : 0}</span>$</p>
                         </div>
                         <div class="flex items-center gap-2">
                             <img src="./images/vaccine.png" alt="" class="w-5 h-5" />
-                            <p class="text-[#131313B2]">Vaccinated status: <span>${data.petData.vaccinated_status}</span></p>
+                            <p class="text-[#131313B2]">Vaccinated status: <span>${data.petData.vaccinated_status ? data.petData.vaccinated_status : "Unknown"}</span></p>
                         </div>
                     </div>
                     <hr class="my-4">
@@ -111,7 +130,7 @@ function displayDetails(petId) {
                             class="rounded-lg border border-[#0E7A81] px-4 py-2 font-bold text-[#0E7A81] bg-[#0E7A811A] w-full">Cancel</button>
                     </div>
                 </div>
-            `
+            `;
             document.getElementById("modal").classList.remove("hidden");
             document.getElementById("modal").innerHTML = "";
             document.getElementById("modal").appendChild(div);
@@ -122,13 +141,34 @@ function closeModal() {
     document.getElementById("modal").classList.add("hidden");
 }
 
+function adoptPet(petId) {
+    document.getElementById("timeModal").classList.remove("hidden");
+    let count = 3;
+    document.getElementById("countdown").innerText = count;
+    const x = setInterval(() => {
+        count = count - 1;
+        document.getElementById("countdown").innerText = count;
+        if (count === 0) {
+            clearInterval(x);
+            document.getElementById("timeModal").classList.add("hidden");
+            document.getElementById(`adopt-${petId}`).innerText = "Adopted";
+            document
+                .getElementById(`adopt-${petId}`)
+                .classList.add("bg-gray-100", "text-gray-500");
+            document
+                .getElementById(`adopt-${petId}`)
+                .classList.remove("hover:bg-[#0E7A8126]", "border");
+            document.getElementById(`adopt-${petId}`).setAttribute("disabled", true);
+        }
+    }, 1000);
+}
+
 function displayAllPets(pets) {
     document.getElementById("pets").innerHTML = "";
 
     document.getElementById("pets-container").classList.add("hidden");
     document.getElementById("loading").classList.remove("hidden");
     setTimeout(() => {
-
         document.getElementById("loading").classList.add("hidden");
         document.getElementById("pets-container").classList.remove("hidden");
 
@@ -168,7 +208,8 @@ function displayAllPets(pets) {
 
             div.innerHTML = `
             <div class="mb-4">
-                                <img src="${pet.image}" alt="" class="h-40 w-full rounded-lg object-cover" />
+                                <img src="${pet.image
+                }" alt="" class="h-40 w-full rounded-lg object-cover" />
                             </div>
                             <div class="space-y-2">
                                 <h4 class="text-lg font-bold text-[#131313] lg:text-xl">
@@ -176,34 +217,43 @@ function displayAllPets(pets) {
                                 </h4>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/breed.svg" alt="" />
-                                    <p class="text-[#131313B2]">
-                                        Breed: <span>${pet.breed ? pet.breed : "Unknown"}</span>
+                                    <p class="text-[#131313B2] text-ellipsis whitespace-nowrap overflow-hidden" title="${pet.breed ? pet.breed : ""
+                }">
+                                        Breed: <span>${pet.breed ? pet.breed : "Unknown"
+                }</span>
                                     </p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/birth.svg" alt="" />
-                                    <p class="text-[#131313B2]">Birth: <span>${pet.date_of_birth ? pet.date_of_birth : "Unknown"}</span></p>
+                                    <p class="text-[#131313B2]">Birth: <span>${pet.date_of_birth
+                    ? pet.date_of_birth
+                    : "Unknown"
+                }</span></p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/gender.svg" alt="" />
-                                    <p class="text-[#131313B2]">Gender: <span>${pet.gender ? pet.gender : "Unknown"}</span></p>
+                                    <p class="text-[#131313B2]">Gender: <span>${pet.gender ? pet.gender : "Unknown"
+                }</span></p>
                                 </div>
                                 <div class="flex items-center gap-2">
                                     <img src="./images/price.svg" alt="" />
-                                    <p class="text-[#131313B2]">Price: <span>${pet.price ? pet.price : 0}</span>$</p>
+                                    <p class="text-[#131313B2]">Price: <span>${pet.price ? pet.price : 0
+                }</span>$</p>
                                 </div>
                             </div>
                             <hr class="my-4" />
                             <div class="flex flex-wrap items-center justify-between gap-4">
-                                <button onclick="addToLiked(${pet.petId})" class="rounded-lg border border-[#0E7A8126] px-4 py-2">
+                                <button onclick="addToLiked(${pet.petId
+                })" class="rounded-lg border border-[#0E7A8126] px-4 py-2 hover:bg-[#0E7A8126]">
                                     <img src="./images/like.svg" alt="" class="" />
                                 </button>
-                                <button
-                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81]">
+                                <button onclick="adoptPet(${pet.petId
+                })" id="adopt-${pet.petId}"
+                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81] hover:bg-[#0E7A8126]">
                                     Adopt
                                 </button>
                                 <button onclick="displayDetails(${pet.petId})"
-                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81]">
+                                    class="flex-1 rounded-lg border border-[#0E7A8126] px-4 py-2 font-bold text-[#0E7A81] hover:bg-[#0E7A8126]">
                                     Details
                                 </button>
                             </div>
